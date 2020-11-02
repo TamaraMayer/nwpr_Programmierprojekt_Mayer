@@ -6,7 +6,20 @@ namespace Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if (args.Length == 1)
+            {
+                if (Int32.TryParse(args[0], out int port))
+                {
+
+                    Client client = new Client();
+                    client.Start(port);
+                }
+            }
+            else
+            {
+                Client client = new Client();
+                client.Start(19);
+            }
         }
     }
 }

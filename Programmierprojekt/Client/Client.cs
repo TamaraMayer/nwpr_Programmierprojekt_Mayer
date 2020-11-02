@@ -17,7 +17,7 @@ namespace Client
         {
             tcpClient = new TcpClient();
 
-            tcpClient.Connect("127.0.0.0",port);
+            tcpClient.Connect("127.0.0.1",port);
 
             Thread thread = new Thread(this.Listen);
             thread.IsBackground = true;
@@ -37,7 +37,10 @@ namespace Client
                 Console.ReadKey();
             }
 
+            Console.WriteLine("Program will be terminated!");
+            tcpClient.Dispose();
 
+            Thread.Sleep(2000);
         }
 
         private void SendMessage()

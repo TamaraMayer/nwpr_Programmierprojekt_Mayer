@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 //MAYER Tamara
 namespace Client
 {
@@ -20,6 +21,7 @@ namespace Client
                 Client client = new Client();
                 client.Start(19);
             }
+
         }
     }
 }

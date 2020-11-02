@@ -6,7 +6,20 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if (args.Length == 1)
+            {
+                if (Int32.TryParse(args[0], out int port))
+                {
+
+                    Server server = new Server();
+                    server.Start(port);
+                }
+            }
+            else
+            {
+                Server server = new Server();
+                server.Start(19);
+            }
         }
     }
 }

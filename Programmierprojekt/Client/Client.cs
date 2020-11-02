@@ -17,12 +17,13 @@ namespace Client
         {
             tcpClient = new TcpClient();
 
-            tcpClient.Connect(IPAddress.Any,port);
+            tcpClient.Connect("127.0.0.0",port);
 
-            //Thread thread = new Thread(this.Listen);
-            //thread.IsBackground = true;
-            //thread.Start();
+            Thread thread = new Thread(this.Listen);
+            thread.IsBackground = true;
+            thread.Start();
 
+            Console.WriteLine("Press escape to end the service, Press Enter to send a new message");
 
             ConsoleKey key = Console.ReadKey().Key;
 
@@ -44,6 +45,26 @@ namespace Client
             string s = RFC.RFC_Protocol.GenerateData();
 
             binaryFormatter.Serialize(tcpClient.GetStream(), s);
+        }
+
+        public void Listen()
+        {
+           
+            try
+            {
+                if (tcpClient.Available > 0)
+                {
+                    string s = RFC.RFC_Protocol.GenerateData();
+
+                    binaryFormatter.Serialize(tcpClient.GetStream(), s);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Some error happend when sending. please press enter to end the application");
+                while (Console.ReadKey().Key != ConsoleKey.Enter) ;
+                Environment.Exit(1);
+            }
         }
     }
 }

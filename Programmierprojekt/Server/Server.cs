@@ -48,7 +48,6 @@ namespace Server
             {
                 Console.WriteLine("The server cannot be started! A server with the same IP Adress or Port is already active");
 
-
                 return;
             }
 

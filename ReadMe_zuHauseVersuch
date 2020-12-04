@@ -1,0 +1,18 @@
+Ich habe nun endlich die Zeit gefunden bzw mir endlich die Zeit genommen dass ich das Projekt noch einmal schreibe, minimum Anforderung von mir selbst ist/war dass es funktioniert.
+Dies tut es zum jetzigen Zeitpunk auf jeden Fall, soweit ich es beurteilen kann aber nur mit den mindest Anforderungen.
+Wenn es mir möglich ist werde ich versuchen es noch weiter zu bauen, dies vermutlich dann in einem eigenen branch den ich dann ins main pulle wenn es funktioniert.
+
+Benötigte informationen:
+.)Server command line arguments: wenn nur ein command angegeben wird ist es der port,
+bei zwei arguments ist das erste der port und das zweite die delay time
+wenn nichts angegeben wird startet der server mit port 19 und 100 millisekunden delay time
+
+bsp: Server.exe 27 1000  => port 27, delay time 1 sekunde
+     Server.exe 27       => port 27
+
+.)Client command line arguments: hier ist es nur möglich den port zu definieren
+wenn nichts angegeben wird startet der client mit port 19
+
+bsp: Client.exe 13 => port 13
+
+Auf meinem Laptop ausprobiert habe ich es auf den Ports: 19,25,200,13,7,1200,80 ; auf allen hat es funktioniert

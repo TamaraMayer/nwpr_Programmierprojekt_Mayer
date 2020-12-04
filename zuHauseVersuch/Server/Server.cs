@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Server
 {
-   public class Server
+    public class Server
     {
+        internal void Start(int port)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

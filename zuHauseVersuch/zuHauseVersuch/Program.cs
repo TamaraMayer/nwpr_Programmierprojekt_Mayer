@@ -25,9 +25,7 @@ namespace Client
                 }
             }
            
-                Console.WriteLine("Something wrong with your start Parameters, please check them and try again! \r\n Press enter!");
-                Console.ReadLine();
-            
+                Console.WriteLine("Something wrong with your start Parameters, please check them and try again!");
         }
     }
 }

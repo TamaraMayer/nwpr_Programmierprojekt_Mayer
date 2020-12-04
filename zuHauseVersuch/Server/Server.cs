@@ -67,9 +67,11 @@ namespace Server
 
                 while (true)
                 {
-                    writer.WriteLine(this.asciiLines[counter]);
+                    writer.WriteLine(this.asciiLines[counter % 72]);
                     writer.Flush();
 
+
+                    counter++;
                     Thread.Sleep(this.delayTime);
                 }
             }

@@ -6,7 +6,6 @@ namespace RFC_Protokoll
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }

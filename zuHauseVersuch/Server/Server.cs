@@ -35,20 +35,21 @@ namespace Server
 
         public void Start(int port)
         {
-        //    try
-        //    {
+            //    try
+            //    {
 
-                TcpListener tcpListener = new TcpListener(IPAddress.Any, port);
-                tcpListener.Start();
+            TcpListener tcpListener = new TcpListener(IPAddress.Any, port);
+            tcpListener.Start();
 
-                Console.WriteLine("Server started");
+            Console.WriteLine("Server started");
 
-                while (true)
-                {
-                    TcpClient client = tcpListener.AcceptTcpClient();
-                    Thread t = new Thread(CommunicateWithClient);
-                    t.Start(client);
-                }
+            while (true)
+            {
+                TcpClient client = tcpListener.AcceptTcpClient();
+                Console.WriteLine("New Client connected");
+                Thread t = new Thread(CommunicateWithClient);
+                t.Start(client);
+            }
             //}
             //catch(Exception e)
             //{
@@ -75,14 +76,14 @@ namespace Server
                     Thread.Sleep(this.delayTime);
                 }
             }
-            catch(IOException e)
+            catch (IOException e)
             {
                 Console.WriteLine("It appears like a client got disconnected");
                 return;
             }
             finally
             {
-                if(client != null)
+                if (client != null)
                 {
                     client.Close();
                 }

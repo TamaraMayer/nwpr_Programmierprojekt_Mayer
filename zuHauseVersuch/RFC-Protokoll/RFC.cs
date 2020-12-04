@@ -6,7 +6,7 @@ namespace RFC_Protokoll
 {
     public class RFC
     {
-        public char[] asciiCharacters;
+        private char[] asciiCharacters;
 
         public RFC()
         {

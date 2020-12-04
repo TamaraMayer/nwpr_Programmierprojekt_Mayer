@@ -6,7 +6,7 @@ namespace RFC_Protokoll
 {
     public class RFC
     {
-        private char[] asciiCharacters;
+        private static char[] asciiCharacters;
 
         public RFC()
         {
@@ -15,7 +15,7 @@ namespace RFC_Protokoll
             SetCharArray();
         }
 
-        private void SetCharArray()
+        private static void SetCharArray()
         {
             for (int i = 0; i < 95; i++)
             {
@@ -24,7 +24,7 @@ namespace RFC_Protokoll
             }
         }
 
-        public string GetAllLines()
+        public static string GetAllLines()
         {
             string s = "";
 

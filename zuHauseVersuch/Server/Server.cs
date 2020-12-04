@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -9,10 +10,33 @@ namespace Server
 {
     public class Server
     {
+        private string[] asciiLines;
+        private int delayTime;
+
+        public Server(int delayTime)
+        {
+            this.delayTime = delayTime;
+
+            asciiLines = new string[72];
+
+            SetAsciiLines();
+        }
+
+        private void SetAsciiLines()
+        {
+            using (StringReader reader = new StringReader(RFC_Protokoll.RFC.GetAllLines()))
+            {
+                for (int i = 0; i < 72; i++)
+                {
+                    asciiLines[i] = reader.ReadLine();
+                }
+            }
+        }
+
         public void Start(int port)
         {
-            try
-            {
+        //    try
+        //    {
 
                 TcpListener tcpListener = new TcpListener(IPAddress.Any, port);
                 tcpListener.Start();
@@ -25,17 +49,34 @@ namespace Server
                     Thread t = new Thread(CommunicateWithClient);
                     t.Start(client);
                 }
-            }
-            catch(Exception e)
-            {
+            //}
+            //catch(Exception e)
+            //{
 
-            }
-
+            //}
         }
 
         private void CommunicateWithClient(object obj)
         {
-            throw new NotImplementedException();
+            int counter = 0;
+            TcpClient client = obj as TcpClient;
+
+            try
+            {
+                StreamWriter writer = new StreamWriter(client.GetStream());
+
+                while (true)
+                {
+                    writer.WriteLine(this.asciiLines[counter]);
+                    writer.Flush();
+
+                    Thread.Sleep(100);
+                }
+            }
+            catch(IOException e)
+            {
+                return;
+            }
         }
     }
 }

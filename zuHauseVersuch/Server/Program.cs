@@ -10,14 +10,21 @@ namespace Server
             {
                 if (Int32.TryParse(args[0], out int port))
                 {
-
-                    Server server = new Server();
+                    Server server = new Server(100);
+                    server.Start(port);
+                }
+            }
+            else if (args.Length == 2)
+            {
+                if (Int32.TryParse(args[0], out int port) && Int32.TryParse(args[1], out int delayTime))
+                {
+                    Server server = new Server(delayTime);
                     server.Start(port);
                 }
             }
             else
             {
-                Server server = new Server();
+                Server server = new Server(100);
                 server.Start(19);
             }
         }

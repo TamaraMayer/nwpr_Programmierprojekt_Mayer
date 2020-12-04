@@ -70,12 +70,19 @@ namespace Server
                     writer.WriteLine(this.asciiLines[counter]);
                     writer.Flush();
 
-                    Thread.Sleep(100);
+                    Thread.Sleep(this.delayTime);
                 }
             }
             catch(IOException e)
             {
                 return;
+            }
+            finally
+            {
+                if(client != null)
+                {
+                    client.Close();
+                }
             }
         }
     }

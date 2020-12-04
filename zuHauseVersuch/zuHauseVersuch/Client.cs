@@ -40,7 +40,7 @@ namespace Client
                 Console.WriteLine("Server is gone");
                 Console.WriteLine("Please press enter to terminate the application");
 
-                while (Console.ReadKey(false).Key != ConsoleKey.Enter);
+                while (Console.ReadKey(true).Key != ConsoleKey.Enter);
             }
         }
     }

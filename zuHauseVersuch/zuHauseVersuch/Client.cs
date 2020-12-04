@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Client
 {
-   public class Client
+    public class Client
     {
         public Client()
         {
@@ -17,28 +17,31 @@ namespace Client
         internal void Start(int port)
         {
             IPAddress ip_adress = IPAddress.Parse("127.0.0.1");
-            //    try
-            //    {
 
-            TcpClient tcpClient = new TcpClient(ip_adress.ToString(), port);
-            Console.WriteLine("Connection successful");
-            Console.WriteLine("Enter 'Exit' to teminate");
-
-            StreamReader reader = new StreamReader(tcpClient.GetStream());
-
-            while (true)
+            try
             {
-                string serverString = reader.ReadLine();
-                Console.WriteLine(serverString);
+                TcpClient tcpClient = new TcpClient(ip_adress.ToString(), port);
+                Console.WriteLine("Connection successful");
+                Console.WriteLine();
+
+                StreamReader reader = new StreamReader(tcpClient.GetStream());
+
+                while (true)
+                {
+                    string serverString = reader.ReadLine();
+                    Console.WriteLine(serverString);
+                }
+
+                reader.Close();
+                tcpClient.Close();
             }
+            catch (IOException e)
+            {
+                Console.WriteLine("Server is gone");
+                Console.WriteLine("Please press enter to terminate the application");
 
-            reader.Close();
-            tcpClient.Close();
-            //}
-            //catch(Exception e)
-            //{
-
-            //}
+                while (Console.ReadKey(false).Key != ConsoleKey.Enter);
+            }
         }
     }
 }

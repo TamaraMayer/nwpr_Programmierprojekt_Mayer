@@ -43,6 +43,13 @@ namespace Client
 
                 while (Console.ReadKey(true).Key != ConsoleKey.Enter);
             }
+            catch(Exception e)
+            {
+                Console.WriteLine("OOPs, looks like something went wrong, please terminate and try again.");
+                Console.WriteLine("Please press enter to terminate the application");
+
+                while (Console.ReadKey(true).Key != ConsoleKey.Enter) ;
+            }
         }
     }
 }

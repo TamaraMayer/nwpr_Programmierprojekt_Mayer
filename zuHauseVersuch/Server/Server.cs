@@ -80,7 +80,6 @@ namespace Server
             catch (IOException e)
             {
                 Console.WriteLine("It appears like a client got disconnected");
-                return;
             }
             finally
             {

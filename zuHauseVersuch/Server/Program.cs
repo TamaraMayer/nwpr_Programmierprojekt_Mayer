@@ -7,12 +7,21 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            if (args.Length == 1)
+            if (args.Length == 0)
+            {
+                Server server = new Server(100);
+                server.Start(19);
+
+                Environment.Exit(0);
+            }
+            else if (args.Length == 1)
             {
                 if (Int32.TryParse(args[0], out int port))
                 {
                     Server server = new Server(100);
                     server.Start(port);
+
+                    Environment.Exit(0);
                 }
             }
             else if (args.Length == 2)
@@ -21,13 +30,14 @@ namespace Server
                 {
                     Server server = new Server(delayTime);
                     server.Start(port);
+
+                    Environment.Exit(0);
                 }
             }
-            else
-            {
-                Server server = new Server(100);
-                server.Start(19);
-            }
+
+                Console.WriteLine("Something wrong with your start Parameters, please check them and try again! \r\n Press enter!");
+                Console.ReadLine();
+            
         }
     }
 }

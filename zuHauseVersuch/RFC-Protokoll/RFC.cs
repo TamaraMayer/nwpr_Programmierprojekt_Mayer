@@ -8,15 +8,10 @@ namespace RFC_Protokoll
     {
         private static char[] asciiCharacters;
 
-        public RFC()
+        private static void SetCharArray()
         {
             asciiCharacters = new char[95];
 
-            SetCharArray();
-        }
-
-        private static void SetCharArray()
-        {
             for (int i = 0; i < 95; i++)
             {
                 char c = Convert.ToChar(i+32);
@@ -26,7 +21,9 @@ namespace RFC_Protokoll
 
         public static string GetAllLines()
         {
-            string s = "";
+            SetCharArray();
+
+            string s = string.Empty;
 
             for (int i = 0; i < 72; i++)
             {
@@ -34,7 +31,7 @@ namespace RFC_Protokoll
                 {
                     int c = (i + j) % 95;
 
-                    s+=asciiCharacters[c];
+                    s=s+asciiCharacters[c];
                 }
 
                 s += "\r\n";

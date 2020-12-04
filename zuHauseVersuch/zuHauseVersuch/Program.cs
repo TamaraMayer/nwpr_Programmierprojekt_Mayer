@@ -10,21 +10,13 @@ namespace Client
             {
                 if (Int32.TryParse(args[0], out int port))
                 {
-                    Client client = new Client(100);
-                    client.Start(port);
-                }
-            }
-            else if (args.Length == 2)
-            {
-                if (Int32.TryParse(args[0], out int port) && Int32.TryParse(args[1], out int delayTime))
-                {
-                    Client client = new Client(delayTime);
+                    Client client = new Client();
                     client.Start(port);
                 }
             }
             else
             {
-                Client client = new Client(100);
+                Client client = new Client();
                 client.Start(19);
             }
         }

@@ -6,7 +6,7 @@ namespace Client
 {
    public class Client
     {
-        public Client(int delayTime)
+        public Client()
         {
 
         }

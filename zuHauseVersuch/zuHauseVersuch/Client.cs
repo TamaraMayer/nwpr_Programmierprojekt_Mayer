@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
+//Tamara Mayer
 namespace Client
 {
     public class Client
